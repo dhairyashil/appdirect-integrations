@@ -1,9 +1,9 @@
 package com.dworks;
 
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.UUID;
@@ -21,9 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.dworks.dto.model.AddressDTO;
-import com.dworks.dto.model.CRUDResponse;
 import com.dworks.dto.model.UserDTO;
-import com.dworks.enums.ResponseCodes;
 import com.dworks.repository.UserRepository;
 import com.dworks.restcontroller.UserCRUDController;
 import com.dworks.security.CustomOAuthProviderProcessingFilter;
@@ -76,8 +74,6 @@ public class ApplicationTests {
 
 		when(userCRUDService.saveOrUpdateUser(user)).thenReturn(user);
 
-		doReturn(user).when(userCRUDService).saveOrUpdateUser(user);
-
 		mockMvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON).content(asJsonString(user)))
 				.andExpect(status().isOk());
 		
@@ -85,19 +81,19 @@ public class ApplicationTests {
 	}
 	
 	@Test
-	public void createUserWithId() throws Exception {
+	public void updateUser() throws Exception {
 
 		UserDTO user = new UserDTO();
 		user.setId(2L);
-		user.setEmail("dhairyashil.bankar@gmail.com");
-		user.setFirstName("dhairyashil");
-		user.setLanguage("English");
-		user.setLastName("Bankar");
+		user.setEmail("dhairyashil.bankar@citruspay.com");
+		user.setFirstName("DHAIRASHIL");
+		user.setLanguage("FRENCH");
+		user.setLastName("BANKAR");
 		user.setOpenId(UUID.randomUUID().toString());
 		user.setUuid(UUID.randomUUID().toString());
 
 		AddressDTO address = new AddressDTO();
-		address.setCity("Pune");
+		address.setCity("PUNE");
 		address.setCountry("India");
 		address.setPhone("9970355688");
 		address.setState("Maharashtra");
@@ -105,13 +101,9 @@ public class ApplicationTests {
 		
 		user.setAddress(address);
 
-		CRUDResponse response = new CRUDResponse(false, ResponseCodes.USER_NOT_FOUND_ERROR_CODE,
-						ResponseCodes.USER_NOT_FOUND_ERROR_MESSAGE.concat("2"));
-		when(userCRUDService.saveOrUpdateUser(user)).thenReturn(response);
+		when(userCRUDService.saveOrUpdateUser(user)).thenReturn(user);
 
-		doReturn(user).when(userCRUDService).saveOrUpdateUser(user);
-
-		mockMvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON).content(asJsonString(user)))
+		mockMvc.perform(put("/user").contentType(MediaType.APPLICATION_JSON).content(asJsonString(user)))
 				.andExpect(status().isOk());
 		
 		verifyNoMoreInteractions(userCRUDService);
