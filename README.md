@@ -26,6 +26,8 @@
         3. Update user
         4. Delete User By id
         
+  Postman to import : https://www.getpostman.com/collections/ec0535bb25054458c415
+  
   Entrypoint for checking code is UserCRUDController.java.
         
         
