@@ -18,3 +18,14 @@
         3. Run the 'mvn clean install' command in repository folder
         4. Once done, Just run command 'java -jar target/appdirect-integration-0.0.1-SNAPSHOT.jar'            from repository folder
         5. H2 DB is configured here. You can check it at path '/console'.
+        
+- CRUD Operations endpoint added
+
+		1. Create user
+        2. Read user By id
+        3. Update user
+        4. Delete User By id
+        
+  Entrypoint for checking code is UserCRUDController.java.
+        
+        
