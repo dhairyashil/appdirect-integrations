@@ -1,5 +1,6 @@
 package com.dworks.dto.model;
 
+import com.dworks.model.Address;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -12,6 +13,18 @@ public class AddressDTO {
 	private String street2;
 	private String zip;
 	
+	public AddressDTO() {	}
+	
+	public AddressDTO(Address address) {
+		this.city = address.getCity();
+		this.country = address.getCountry();
+		this.phone = address.getPhone();
+		this.state = address.getState();
+		this.street1 = address.getStreet1();
+		this.street2 = address.getStreet2();
+		this.zip = address.getZip();
+	}
+
 	public String getCity() {
 		return city;
 	}

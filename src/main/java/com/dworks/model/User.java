@@ -30,6 +30,7 @@ public class User {
 	public User() {}
 	
 	public User(UserDTO userDTO) {
+		this.id = userDTO.getId();
 		this.uuid = userDTO.getUuid();
 		this.email = userDTO.getEmail();
 		this.firstName = userDTO.getFirstName();

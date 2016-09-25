@@ -53,7 +53,6 @@ public class Application {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
         	http.csrf().disable();
-        	http.authorizeRequests().antMatchers("/console/**").permitAll();
         	http.headers().frameOptions().disable();
 
             http.antMatcher("/subscription/*")
