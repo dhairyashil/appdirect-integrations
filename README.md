@@ -11,7 +11,7 @@
         1. Oauth Signature verification on the AppDirect issued API requests.
         2. For reading the event details(by performing an HTTP GET after signing the eventUrl with         your OAuth credentials) when AppDirect notifies your application of a Subscription event.
 
-- Steps To Run the application:'
+- Steps To Run the application:
 
         1. Prerequisite : Install JAVA 8 , Maven, Git
         2. Clone the repository
