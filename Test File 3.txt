@@ -1,0 +1,1 @@
+Test File 3 contents added, now checking for gitreposearcher logs.
